@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block title %}Log Out{% endblock%} {% block content
+%}
+
+<p class="text-info">Are you sure you want to log out?</p>
+
+<form method="post" action="{{ url_for('logout') }}">
+  {{ form.hidden_tag() }} {% for field in form if field.widget.input_type !=
+  'hidden'%} {{ field.label }} {{ field }} {% for error in field.errors %}
+  <span class="form-text text-danger">{{ error }}</span>
+  {% endfor %} {% endfor%}
+  <button type="submit">Logout</button>
+</form>
+{% endblock %}
